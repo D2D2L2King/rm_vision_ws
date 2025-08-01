@@ -1,0 +1,8 @@
+prefix=/home/h1r0/rm_vision/install
+
+Name: usb_cam2cv
+Description: Description of usb_cam2cv
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

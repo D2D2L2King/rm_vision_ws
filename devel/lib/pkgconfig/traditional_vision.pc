@@ -1,0 +1,8 @@
+prefix=/home/h1r0/rm_vision/devel
+
+Name: traditional_vision
+Description: Description of traditional_vision
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

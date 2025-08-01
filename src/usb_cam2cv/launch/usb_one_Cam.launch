@@ -1,0 +1,6 @@
+<launch>
+    <arg name="video_number" default="2" /> <!-- 表示usb摄像头索引 -->
+    <arg name="camera_mode" default="0" /> <!-- 0表示不保存图像，1表示保存图像 -->
+    <!-- 启动usbcam转image节点 -->
+    <node pkg="usb_cam2cv" type="usbCam2image" name="usb_cam2image_node" args="$(arg video_number) $(arg camera_mode)" output="screen" />
+</launch>
