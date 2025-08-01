@@ -1,0 +1,8 @@
+prefix=/home/h1r0/rm_vision/install
+
+Name: hik_pnp
+Description: Description of hik_pnp
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

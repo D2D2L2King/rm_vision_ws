@@ -146,7 +146,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/h1r0/rm_vision/build/gtest/cmake_install.cmake")
+  include("/home/h1r0/rm_vision/build/hik_pnp/cmake_install.cmake")
   include("/home/h1r0/rm_vision/build/usb_cam2cv/cmake_install.cmake")
+  include("/home/h1r0/rm_vision/build/hik2cv_pack/cmake_install.cmake")
   include("/home/h1r0/rm_vision/build/traditional_vision/cmake_install.cmake")
   include("/home/h1r0/rm_vision/build/yolo_pack/cmake_install.cmake")
 

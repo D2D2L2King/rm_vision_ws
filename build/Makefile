@@ -285,6 +285,32 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named camera_calibration
+
+# Build rule for target.
+camera_calibration: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 camera_calibration
+.PHONY : camera_calibration
+
+# fast build rule for target.
+camera_calibration/fast:
+	$(MAKE) -f hik_pnp/CMakeFiles/camera_calibration.dir/build.make hik_pnp/CMakeFiles/camera_calibration.dir/build
+.PHONY : camera_calibration/fast
+
+#=============================================================================
+# Target rules for targets named _catkin_empty_exported_target
+
+# Build rule for target.
+_catkin_empty_exported_target: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
+.PHONY : _catkin_empty_exported_target
+
+# fast build rule for target.
+_catkin_empty_exported_target/fast:
+	$(MAKE) -f hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_py
 
 # Build rule for target.
@@ -623,6 +649,19 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named hik2cv
+
+# Build rule for target.
+hik2cv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hik2cv
+.PHONY : hik2cv
+
+# fast build rule for target.
+hik2cv/fast:
+	$(MAKE) -f hik2cv_pack/CMakeFiles/hik2cv.dir/build.make hik2cv_pack/CMakeFiles/hik2cv.dir/build
+.PHONY : hik2cv/fast
+
+#=============================================================================
 # Target rules for targets named process_image
 
 # Build rule for target.
@@ -634,19 +673,6 @@ process_image: cmake_check_build_system
 process_image/fast:
 	$(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/build
 .PHONY : process_image/fast
-
-#=============================================================================
-# Target rules for targets named _catkin_empty_exported_target
-
-# Build rule for target.
-_catkin_empty_exported_target: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	$(MAKE) -f yolo_pack/CMakeFiles/_catkin_empty_exported_target.dir/build.make yolo_pack/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
 
 # Help Target
 help:
@@ -670,6 +696,8 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... camera_calibration"
+	@echo "... _catkin_empty_exported_target"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -696,8 +724,8 @@ help:
 	@echo "... usbCam2image"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
+	@echo "... hik2cv"
 	@echo "... process_image"
-	@echo "... _catkin_empty_exported_target"
 .PHONY : help
 
 

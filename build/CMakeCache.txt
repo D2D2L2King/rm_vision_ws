@@ -458,6 +458,18 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
+//Value Computed by CMake
+hik2cv_pack_BINARY_DIR:STATIC=/home/h1r0/rm_vision/build/hik2cv_pack
+
+//Value Computed by CMake
+hik2cv_pack_SOURCE_DIR:STATIC=/home/h1r0/rm_vision/src/hik2cv_pack
+
+//Value Computed by CMake
+hik_pnp_BINARY_DIR:STATIC=/home/h1r0/rm_vision/build/hik_pnp
+
+//Value Computed by CMake
+hik_pnp_SOURCE_DIR:STATIC=/home/h1r0/rm_vision/src/hik_pnp
+
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 
@@ -675,7 +687,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
