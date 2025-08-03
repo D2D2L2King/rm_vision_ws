@@ -20,6 +20,6 @@
     xxx
 
 ##  通讯框架
-`hik2cv_pack hik2cv.launch`
-->**topic:**"/hik2cv/hik_image"
-`traditional_vision process_image.cpp`
+`hik2cv_pack hik2cv.launch`   
+**topic:**"/hik2cv/hik_image"   
+`traditional_vision process_image.cpp`   
