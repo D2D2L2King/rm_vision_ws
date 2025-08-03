@@ -8,3 +8,4 @@
 
 
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg); // 图像转换函数声明
+cv::Mat image_processing(const cv::Mat& image); // 图像处理函数声明

@@ -2,4 +2,4 @@
 source_root_dir = '/home/h1r0/rm_vision_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/home/h1r0/NavSim_ws/devel;/home/h1r0/lidar_ws/devel;/home/h1r0/catkin_ws/devel;/opt/ros/noetic'.split(';') if '/home/h1r0/NavSim_ws/devel;/home/h1r0/lidar_ws/devel;/home/h1r0/catkin_ws/devel;/opt/ros/noetic' != '' else []
+underlay_workspaces = '/home/h1r0/rm_vision_ws/devel;/home/h1r0/NavSim_ws/devel;/home/h1r0/lidar_ws/devel;/home/h1r0/catkin_ws/devel;/opt/ros/noetic'.split(';') if '/home/h1r0/rm_vision_ws/devel;/home/h1r0/NavSim_ws/devel;/home/h1r0/lidar_ws/devel;/home/h1r0/catkin_ws/devel;/opt/ros/noetic' != '' else []

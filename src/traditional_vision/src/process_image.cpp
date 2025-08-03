@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     
     while (ros::ok()) 
     {
-        cv::Mat image_cv; // 用于显示处理后的图像
+        cv::Mat image_cv, image_processed; // 用于显示处理后的图像
         {
             std::lock_guard<std::mutex> lock(image_mutex); // 加锁，保护共享图像
             if (!image_tmp.empty()) 
@@ -25,7 +25,8 @@ int main(int argc, char* argv[]) {
             }
         }
         /****** 图像处理 ******/
-        
+        if (!image_cv.empty()) {
+            image_processed = image_processing(image_cv); // 调用图像处理函数
 
 
 
@@ -43,8 +44,11 @@ int main(int argc, char* argv[]) {
 
 
 
+
+
+        }
         /*********************/
-        if (image_tmp.empty()) {
+        if (image_cv.empty()) {
             ROS_ERROR("No image received yet.");
         }
         else
@@ -56,9 +60,7 @@ int main(int argc, char* argv[]) {
         std_msgs::Header header; // 创建ros消息头
         header.stamp = ros::Time::now(); // 设置时间戳
         header.frame_id = "hik2cv_frame"; // 设置帧ID
-        sensor_msgs::Image msg; // 创建图像消息
-        
-        msg = *cv_bridge::CvImage(header, "bgr8", image_cv).toImageMsg(); // 将OpenCV图像转换为ROS消息格式
+        sensor_msgs::Image msg = *cv_bridge::CvImage(header, "bgr8", image_processed).toImageMsg(); // 将OpenCV图像转换为ROS消息格式
         puber.publish(msg); // 发布图像消息
 
 
@@ -73,11 +75,11 @@ int main(int argc, char* argv[]) {
 
 void call_back(const sensor_msgs::ImageConstPtr& msg){
     cv::Mat temp = image2cv(msg); // 将ROS图像消息转换为OpenCV格式
-
-    // 加锁更新共享图像
-    std::lock_guard<std::mutex> lock(image_mutex);
-    image_tmp = temp.clone();  // 确保深拷贝
-
+    {
+        // 加锁更新共享图像
+        std::lock_guard<std::mutex> lock(image_mutex);
+        image_tmp = temp.clone();  // 确保深拷贝
+    }
     if (image_tmp.empty()) // 检查转换是否成功
     {
         ROS_ERROR("Failed to convert image from ROS to OpenCV format.");

@@ -40,6 +40,10 @@ PixelType.h
 stdint.h
 -
 
+/home/h1r0/rm_vision_ws/src/hik2cv_pack/include/hik.cpp
+hik.h
+/home/h1r0/rm_vision_ws/src/hik2cv_pack/include/hik.h
+
 /home/h1r0/rm_vision_ws/src/hik2cv_pack/include/hik.h
 stdio.h
 -
