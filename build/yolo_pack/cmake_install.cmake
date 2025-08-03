@@ -1,8 +1,8 @@
-# Install script for directory: /home/h1r0/rm_vision/src/yolo_pack
+# Install script for directory: /home/h1r0/rm_vision_ws/src/yolo_pack
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision/install")
+  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision/build/yolo_pack/catkin_generated/installspace/yolo_pack.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision_ws/build/yolo_pack/catkin_generated/installspace/yolo_pack.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolo_pack/cmake" TYPE FILE FILES
-    "/home/h1r0/rm_vision/build/yolo_pack/catkin_generated/installspace/yolo_packConfig.cmake"
-    "/home/h1r0/rm_vision/build/yolo_pack/catkin_generated/installspace/yolo_packConfig-version.cmake"
+    "/home/h1r0/rm_vision_ws/build/yolo_pack/catkin_generated/installspace/yolo_packConfig.cmake"
+    "/home/h1r0/rm_vision_ws/build/yolo_pack/catkin_generated/installspace/yolo_packConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolo_pack" TYPE FILE FILES "/home/h1r0/rm_vision/src/yolo_pack/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolo_pack" TYPE FILE FILES "/home/h1r0/rm_vision_ws/src/yolo_pack/package.xml")
 endif()
 

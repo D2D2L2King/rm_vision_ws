@@ -1,8 +1,8 @@
-# Install script for directory: /home/h1r0/rm_vision/src/hik_pnp
+# Install script for directory: /home/h1r0/rm_vision_ws/src/hik_pnp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision/install")
+  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision/build/hik_pnp/catkin_generated/installspace/hik_pnp.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision_ws/build/hik_pnp/catkin_generated/installspace/hik_pnp.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hik_pnp/cmake" TYPE FILE FILES
-    "/home/h1r0/rm_vision/build/hik_pnp/catkin_generated/installspace/hik_pnpConfig.cmake"
-    "/home/h1r0/rm_vision/build/hik_pnp/catkin_generated/installspace/hik_pnpConfig-version.cmake"
+    "/home/h1r0/rm_vision_ws/build/hik_pnp/catkin_generated/installspace/hik_pnpConfig.cmake"
+    "/home/h1r0/rm_vision_ws/build/hik_pnp/catkin_generated/installspace/hik_pnpConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hik_pnp" TYPE FILE FILES "/home/h1r0/rm_vision/src/hik_pnp/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hik_pnp" TYPE FILE FILES "/home/h1r0/rm_vision_ws/src/hik_pnp/package.xml")
 endif()
 

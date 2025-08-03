@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/h1r0/rm_vision/src/hik_pnp/include/debug_tools.hpp
+/home/h1r0/rm_vision_ws/src/hik_pnp/include/debug_tools.hpp
 iostream
 -
 string
@@ -14,19 +14,19 @@ string
 chrono
 -
 
-/home/h1r0/rm_vision/src/hik_pnp/include/pnp.hpp
+/home/h1r0/rm_vision_ws/src/hik_pnp/include/pnp.hpp
 iostream
 -
 opencv2/opencv.hpp
 -
 debug_tools.hpp
-/home/h1r0/rm_vision/src/hik_pnp/include/debug_tools.hpp
+/home/h1r0/rm_vision_ws/src/hik_pnp/include/debug_tools.hpp
 
-/home/h1r0/rm_vision/src/hik_pnp/src/camera_calibration.cpp
+/home/h1r0/rm_vision_ws/src/hik_pnp/src/camera_calibration.cpp
 iostream
 -
 pnp.hpp
-/home/h1r0/rm_vision/src/hik_pnp/src/pnp.hpp
+/home/h1r0/rm_vision_ws/src/hik_pnp/src/pnp.hpp
 
 /usr/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp

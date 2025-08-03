@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration"
-  "/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration.pdb"
+  "/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration"
+  "/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration.pdb"
   "CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o"
 )
 

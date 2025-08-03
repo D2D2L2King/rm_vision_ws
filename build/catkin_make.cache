@@ -1,2 +1,2 @@
 hik2cv_pack:hik_pnp:traditional_vision:usb_cam2cv:yolo_pack
--DCATKIN_DEVEL_PREFIX=/home/h1r0/rm_vision/devel -DCMAKE_INSTALL_PREFIX=/home/h1r0/rm_vision/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/h1r0/rm_vision_ws/devel -DCMAKE_INSTALL_PREFIX=/home/h1r0/rm_vision_ws/install -G Unix Makefiles

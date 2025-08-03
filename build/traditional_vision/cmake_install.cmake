@@ -1,8 +1,8 @@
-# Install script for directory: /home/h1r0/rm_vision/src/traditional_vision
+# Install script for directory: /home/h1r0/rm_vision_ws/src/traditional_vision
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision/install")
+  set(CMAKE_INSTALL_PREFIX "/home/h1r0/rm_vision_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision/build/traditional_vision/catkin_generated/installspace/traditional_vision.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/h1r0/rm_vision_ws/build/traditional_vision/catkin_generated/installspace/traditional_vision.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/traditional_vision/cmake" TYPE FILE FILES
-    "/home/h1r0/rm_vision/build/traditional_vision/catkin_generated/installspace/traditional_visionConfig.cmake"
-    "/home/h1r0/rm_vision/build/traditional_vision/catkin_generated/installspace/traditional_visionConfig-version.cmake"
+    "/home/h1r0/rm_vision_ws/build/traditional_vision/catkin_generated/installspace/traditional_visionConfig.cmake"
+    "/home/h1r0/rm_vision_ws/build/traditional_vision/catkin_generated/installspace/traditional_visionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/traditional_vision" TYPE FILE FILES "/home/h1r0/rm_vision/src/traditional_vision/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/traditional_vision" TYPE FILE FILES "/home/h1r0/rm_vision_ws/src/traditional_vision/package.xml")
 endif()
 

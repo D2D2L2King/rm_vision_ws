@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = -DROS_BUILD_SHARED_LIBS=1
 
-CXX_INCLUDES = -I/home/h1r0/rm_vision/src/hik_pnp/include -isystem /usr/include/opencv4 
+CXX_INCLUDES = -I/home/h1r0/rm_vision_ws/src/hik_pnp/include -isystem /usr/include/opencv4 
 

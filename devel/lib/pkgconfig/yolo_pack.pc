@@ -1,4 +1,4 @@
-prefix=/home/h1r0/rm_vision/devel
+prefix=/home/h1r0/rm_vision_ws/devel
 
 Name: yolo_pack
 Description: Description of yolo_pack

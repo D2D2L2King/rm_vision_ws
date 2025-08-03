@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/h1r0/rm_vision/devel/lib/usb_cam2cv/usbCam2image"
-  "/home/h1r0/rm_vision/devel/lib/usb_cam2cv/usbCam2image.pdb"
+  "/home/h1r0/rm_vision_ws/devel/lib/usb_cam2cv/usbCam2image"
+  "/home/h1r0/rm_vision_ws/devel/lib/usb_cam2cv/usbCam2image.pdb"
   "CMakeFiles/usbCam2image.dir/include/function.cpp.o"
   "CMakeFiles/usbCam2image.dir/src/usbCam2image.cpp.o"
 )

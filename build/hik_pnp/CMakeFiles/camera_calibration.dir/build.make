@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h1r0/rm_vision/src
+CMAKE_SOURCE_DIR = /home/h1r0/rm_vision_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h1r0/rm_vision/build
+CMAKE_BINARY_DIR = /home/h1r0/rm_vision_ws/build
 
 # Include any dependencies generated for this target.
 include hik_pnp/CMakeFiles/camera_calibration.dir/depend.make
@@ -58,17 +58,17 @@ include hik_pnp/CMakeFiles/camera_calibration.dir/progress.make
 include hik_pnp/CMakeFiles/camera_calibration.dir/flags.make
 
 hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o: hik_pnp/CMakeFiles/camera_calibration.dir/flags.make
-hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o: /home/h1r0/rm_vision/src/hik_pnp/src/camera_calibration.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h1r0/rm_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o"
-	cd /home/h1r0/rm_vision/build/hik_pnp && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o -c /home/h1r0/rm_vision/src/hik_pnp/src/camera_calibration.cpp
+hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o: /home/h1r0/rm_vision_ws/src/hik_pnp/src/camera_calibration.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h1r0/rm_vision_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o"
+	cd /home/h1r0/rm_vision_ws/build/hik_pnp && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o -c /home/h1r0/rm_vision_ws/src/hik_pnp/src/camera_calibration.cpp
 
 hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.i"
-	cd /home/h1r0/rm_vision/build/hik_pnp && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h1r0/rm_vision/src/hik_pnp/src/camera_calibration.cpp > CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.i
+	cd /home/h1r0/rm_vision_ws/build/hik_pnp && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h1r0/rm_vision_ws/src/hik_pnp/src/camera_calibration.cpp > CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.i
 
 hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.s"
-	cd /home/h1r0/rm_vision/build/hik_pnp && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h1r0/rm_vision/src/hik_pnp/src/camera_calibration.cpp -o CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.s
+	cd /home/h1r0/rm_vision_ws/build/hik_pnp && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h1r0/rm_vision_ws/src/hik_pnp/src/camera_calibration.cpp -o CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.s
 
 # Object files for target camera_calibration
 camera_calibration_OBJECTS = \
@@ -77,70 +77,70 @@ camera_calibration_OBJECTS = \
 # External object files for target camera_calibration
 camera_calibration_EXTERNAL_OBJECTS =
 
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/build.make
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_face.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0
-/home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h1r0/rm_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration"
-	cd /home/h1r0/rm_vision/build/hik_pnp && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/camera_calibration.dir/link.txt --verbose=$(VERBOSE)
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/build.make
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_face.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0
+/home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h1r0/rm_vision_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration"
+	cd /home/h1r0/rm_vision_ws/build/hik_pnp && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/camera_calibration.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-hik_pnp/CMakeFiles/camera_calibration.dir/build: /home/h1r0/rm_vision/devel/lib/hik_pnp/camera_calibration
+hik_pnp/CMakeFiles/camera_calibration.dir/build: /home/h1r0/rm_vision_ws/devel/lib/hik_pnp/camera_calibration
 
 .PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/build
 
 hik_pnp/CMakeFiles/camera_calibration.dir/clean:
-	cd /home/h1r0/rm_vision/build/hik_pnp && $(CMAKE_COMMAND) -P CMakeFiles/camera_calibration.dir/cmake_clean.cmake
+	cd /home/h1r0/rm_vision_ws/build/hik_pnp && $(CMAKE_COMMAND) -P CMakeFiles/camera_calibration.dir/cmake_clean.cmake
 .PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/clean
 
 hik_pnp/CMakeFiles/camera_calibration.dir/depend:
-	cd /home/h1r0/rm_vision/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h1r0/rm_vision/src /home/h1r0/rm_vision/src/hik_pnp /home/h1r0/rm_vision/build /home/h1r0/rm_vision/build/hik_pnp /home/h1r0/rm_vision/build/hik_pnp/CMakeFiles/camera_calibration.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h1r0/rm_vision_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h1r0/rm_vision_ws/src /home/h1r0/rm_vision_ws/src/hik_pnp /home/h1r0/rm_vision_ws/build /home/h1r0/rm_vision_ws/build/hik_pnp /home/h1r0/rm_vision_ws/build/hik_pnp/CMakeFiles/camera_calibration.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/depend
 

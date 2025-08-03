@@ -1,4 +1,4 @@
-prefix=/home/h1r0/rm_vision/install
+prefix=/home/h1r0/rm_vision_ws/install
 
 Name: hik_pnp
 Description: Description of hik_pnp

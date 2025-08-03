@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/h1r0/rm_vision/src/traditional_vision",
+    "cmake.sourceDirectory": "/home/h1r0/rm_vision_ws/src/hik2cv_pack",
     "files.associations": {
         "bitset": "cpp",
         "cctype": "cpp",

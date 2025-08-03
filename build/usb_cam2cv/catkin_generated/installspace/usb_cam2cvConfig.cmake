@@ -67,14 +67,14 @@ set(usb_cam2cv_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(usb_cam2cv_SOURCE_PREFIX /home/h1r0/rm_vision/src/usb_cam2cv)
-  set(usb_cam2cv_DEVEL_PREFIX /home/h1r0/rm_vision/devel)
+  set(usb_cam2cv_SOURCE_PREFIX /home/h1r0/rm_vision_ws/src/usb_cam2cv)
+  set(usb_cam2cv_DEVEL_PREFIX /home/h1r0/rm_vision_ws/devel)
   set(usb_cam2cv_INSTALL_PREFIX "")
   set(usb_cam2cv_PREFIX ${usb_cam2cv_DEVEL_PREFIX})
 else()
   set(usb_cam2cv_SOURCE_PREFIX "")
   set(usb_cam2cv_DEVEL_PREFIX "")
-  set(usb_cam2cv_INSTALL_PREFIX /home/h1r0/rm_vision/install)
+  set(usb_cam2cv_INSTALL_PREFIX /home/h1r0/rm_vision_ws/install)
   set(usb_cam2cv_PREFIX ${usb_cam2cv_INSTALL_PREFIX})
 endif()
 
@@ -156,7 +156,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/h1r0/rm_vision/install/lib;/home/h1r0/yolo_test_ws/devel/lib;/home/h1r0/rm_vision/devel/lib;/home/h1r0/NavSim_ws/devel/lib;/home/h1r0/lidar_ws/devel/lib;/home/h1r0/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/h1r0/rm_vision_ws/install/lib;/home/h1r0/NavSim_ws/devel/lib;/home/h1r0/lidar_ws/devel/lib;/home/h1r0/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
