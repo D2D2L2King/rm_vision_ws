@@ -18,3 +18,8 @@
 - **操作系统**：Ubuntu 20.04 LTS
 - **依赖包**：
     xxx
+
+##  通讯框架
+`hik2cv_pack hik2cv.launch`
+->**topic:**"/hik2cv/hik_image"
+`traditional_vision process_image.cpp`

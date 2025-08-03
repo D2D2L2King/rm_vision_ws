@@ -30,7 +30,13 @@ cv::Mat image_processing(const cv::Mat& image) {
     // 如果需要使用相关颜色的掩码，可以取消注释相关代码
     cv::cvtColor(image, hsv, cv::COLOR_BGR2HSV); // 将BGR图像转换为HSV色彩空间
     // cv::inRange(hsv, lower_blue, upper_blue, mask); // 根据蓝色范围创建掩码
-    cv::inRange(hsv, lower_red, upper_red, mask); // 根据红色范围创建掩码,返回值是二值图像
+    cv::inRange(hsv, lower_red, upper_red, mask); // 根据红色范围创建掩码,返回值是二值图像 
+
+
+
+
+
+    
 
     return mask;
 }
