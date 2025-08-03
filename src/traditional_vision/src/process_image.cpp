@@ -1,5 +1,7 @@
 #include "../include/process.h"
 
+#define MAX_FPS 150 // 默认最大帧率
+
 void call_back(const sensor_msgs::ImageConstPtr& msg); // 回调函数声明
 
 std::mutex image_mutex;  // 保护共享图像的互斥锁
@@ -8,14 +10,18 @@ cv::Mat image_tmp; // 用于存储处理后的图像, 全局变量
 int main(int argc, char* argv[]) {
     ros::init(argc, argv, "tradtion_process_image_node"); // 初始化ROS节点
     ros::NodeHandle nh; // 创建ROS节点句柄
-    ros::Subscriber suber = nh.subscribe<sensor_msgs::Image>("/hik2cv/hik_image", 5, call_back); // 订阅图像话题，队列大小为5
+    ros::Subscriber suber = nh.subscribe<sensor_msgs::Image>("/hik2cv/hik_image", 3, call_back); // 订阅图像话题，队列大小为5
     ros::Publisher puber = nh.advertise<sensor_msgs::Image>("/hik2cv/processed_image", 2); // 发布处理后的图像话题
-
+    int real_fps = MAX_FPS; // 默认最大帧率
     // 动态调整从参数服务器获取参数
     ros::Rate loop_rate(150); // 设置循环频率
     
     while (ros::ok()) 
     {
+        // 从参数服务器获取参数
+        
+        nh.param("/hik2cv_node/realtime_fps", real_fps, 150); // 从参数服务器获取最大帧率，默认值为150
+        ros::Rate loop_rate(real_fps); // 设置循环频率
         cv::Mat image_cv, image_processed; // 用于显示处理后的图像
         {
             std::lock_guard<std::mutex> lock(image_mutex); // 加锁，保护共享图像
