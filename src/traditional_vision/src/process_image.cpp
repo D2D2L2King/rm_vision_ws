@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
         }
         else
         {
-            cv::imshow("image_cv", image_cv); // 显示处理后的图像
+            cv::imshow("result", image_processed); // 显示处理后的图像
             cv::waitKey(1); // 等待1毫秒
         }
 
