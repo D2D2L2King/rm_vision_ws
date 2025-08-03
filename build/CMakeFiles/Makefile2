@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/h1r0/rm_vision_ws/build
 
 # The main recursive "all" target.
 all: gtest/all
-all: hik_pnp/all
+all: hik_calibration/all
 all: usb_cam2cv/all
 all: hik2cv_pack/all
 all: traditional_vision/all
@@ -64,7 +64,7 @@ all: yolo_pack/all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
-preinstall: hik_pnp/preinstall
+preinstall: hik_calibration/preinstall
 preinstall: usb_cam2cv/preinstall
 preinstall: hik2cv_pack/preinstall
 preinstall: traditional_vision/preinstall
@@ -79,7 +79,7 @@ clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
-clean: hik_pnp/clean
+clean: hik_calibration/clean
 clean: usb_cam2cv/clean
 clean: hik2cv_pack/clean
 clean: traditional_vision/clean
@@ -163,23 +163,23 @@ hik2cv_pack/clean: hik2cv_pack/CMakeFiles/hik2cv.dir/clean
 .PHONY : hik2cv_pack/clean
 
 #=============================================================================
-# Directory level rules for directory hik_pnp
+# Directory level rules for directory hik_calibration
 
 # Recursive "all" directory target.
-hik_pnp/all: hik_pnp/CMakeFiles/camera_calibration.dir/all
+hik_calibration/all: hik_calibration/CMakeFiles/camera_calibration.dir/all
 
-.PHONY : hik_pnp/all
+.PHONY : hik_calibration/all
 
 # Recursive "preinstall" directory target.
-hik_pnp/preinstall:
+hik_calibration/preinstall:
 
-.PHONY : hik_pnp/preinstall
+.PHONY : hik_calibration/preinstall
 
 # Recursive "clean" directory target.
-hik_pnp/clean: hik_pnp/CMakeFiles/camera_calibration.dir/clean
-hik_pnp/clean: hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/clean
+hik_calibration/clean: hik_calibration/CMakeFiles/camera_calibration.dir/clean
+hik_calibration/clean: hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
-.PHONY : hik_pnp/clean
+.PHONY : hik_calibration/clean
 
 #=============================================================================
 # Directory level rules for directory traditional_vision
@@ -505,58 +505,58 @@ gtest/googletest/CMakeFiles/gtest.dir/clean:
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/clean
 
 #=============================================================================
-# Target rules for target hik_pnp/CMakeFiles/camera_calibration.dir
+# Target rules for target hik_calibration/CMakeFiles/camera_calibration.dir
 
 # All Build rule for target.
-hik_pnp/CMakeFiles/camera_calibration.dir/all:
-	$(MAKE) -f hik_pnp/CMakeFiles/camera_calibration.dir/build.make hik_pnp/CMakeFiles/camera_calibration.dir/depend
-	$(MAKE) -f hik_pnp/CMakeFiles/camera_calibration.dir/build.make hik_pnp/CMakeFiles/camera_calibration.dir/build
+hik_calibration/CMakeFiles/camera_calibration.dir/all:
+	$(MAKE) -f hik_calibration/CMakeFiles/camera_calibration.dir/build.make hik_calibration/CMakeFiles/camera_calibration.dir/depend
+	$(MAKE) -f hik_calibration/CMakeFiles/camera_calibration.dir/build.make hik_calibration/CMakeFiles/camera_calibration.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/h1r0/rm_vision_ws/build/CMakeFiles --progress-num=1,2 "Built target camera_calibration"
-.PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/all
+.PHONY : hik_calibration/CMakeFiles/camera_calibration.dir/all
 
 # Build rule for subdir invocation for target.
-hik_pnp/CMakeFiles/camera_calibration.dir/rule: cmake_check_build_system
+hik_calibration/CMakeFiles/camera_calibration.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/h1r0/rm_vision_ws/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 hik_pnp/CMakeFiles/camera_calibration.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 hik_calibration/CMakeFiles/camera_calibration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/h1r0/rm_vision_ws/build/CMakeFiles 0
-.PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/rule
+.PHONY : hik_calibration/CMakeFiles/camera_calibration.dir/rule
 
 # Convenience name for target.
-camera_calibration: hik_pnp/CMakeFiles/camera_calibration.dir/rule
+camera_calibration: hik_calibration/CMakeFiles/camera_calibration.dir/rule
 
 .PHONY : camera_calibration
 
 # clean rule for target.
-hik_pnp/CMakeFiles/camera_calibration.dir/clean:
-	$(MAKE) -f hik_pnp/CMakeFiles/camera_calibration.dir/build.make hik_pnp/CMakeFiles/camera_calibration.dir/clean
-.PHONY : hik_pnp/CMakeFiles/camera_calibration.dir/clean
+hik_calibration/CMakeFiles/camera_calibration.dir/clean:
+	$(MAKE) -f hik_calibration/CMakeFiles/camera_calibration.dir/build.make hik_calibration/CMakeFiles/camera_calibration.dir/clean
+.PHONY : hik_calibration/CMakeFiles/camera_calibration.dir/clean
 
 #=============================================================================
-# Target rules for target hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir
+# Target rules for target hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir
 
 # All Build rule for target.
-hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/all:
-	$(MAKE) -f hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/depend
-	$(MAKE) -f hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build
+hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) -f hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) -f hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/h1r0/rm_vision_ws/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
-.PHONY : hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/all
+.PHONY : hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/all
 
 # Build rule for subdir invocation for target.
-hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/h1r0/rm_vision_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/h1r0/rm_vision_ws/build/CMakeFiles 0
-.PHONY : hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-_catkin_empty_exported_target: hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/rule
+_catkin_empty_exported_target: hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 .PHONY : _catkin_empty_exported_target
 
 # clean rule for target.
-hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	$(MAKE) -f hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/clean
-.PHONY : hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/clean
+hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) -f hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Target rules for target usb_cam2cv/CMakeFiles/std_msgs_generate_messages_py.dir

@@ -12,7 +12,6 @@ find_package(catkin REQUIRED COMPONENTS # 查找 catkin 包
   rospy
   std_msgs
   sensor_msgs
-  std_msgs
 )
 
 find_package(OpenCV REQUIRED) # 查找 OpenCV 包
@@ -35,7 +34,7 @@ include_directories( # 添加头文件搜索路径
 )
 
 # 添加可执行文件
-add_executable(process_image src/process_image.cpp include/image2cv.cpp)
+add_executable(process_image src/process_image.cpp include/process.cpp)
 # 链接catkin和OpenCV库
 target_link_libraries(process_image
   ${catkin_LIBRARIES}

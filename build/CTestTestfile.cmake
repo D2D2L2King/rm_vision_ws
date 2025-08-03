@@ -5,7 +5,7 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
-subdirs("hik_pnp")
+subdirs("hik_calibration")
 subdirs("usb_cam2cv")
 subdirs("hik2cv_pack")
 subdirs("traditional_vision")

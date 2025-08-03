@@ -294,7 +294,7 @@ camera_calibration: cmake_check_build_system
 
 # fast build rule for target.
 camera_calibration/fast:
-	$(MAKE) -f hik_pnp/CMakeFiles/camera_calibration.dir/build.make hik_pnp/CMakeFiles/camera_calibration.dir/build
+	$(MAKE) -f hik_calibration/CMakeFiles/camera_calibration.dir/build.make hik_calibration/CMakeFiles/camera_calibration.dir/build
 .PHONY : camera_calibration/fast
 
 #=============================================================================
@@ -307,7 +307,7 @@ _catkin_empty_exported_target: cmake_check_build_system
 
 # fast build rule for target.
 _catkin_empty_exported_target/fast:
-	$(MAKE) -f hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_pnp/CMakeFiles/_catkin_empty_exported_target.dir/build
+	$(MAKE) -f hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build.make hik_calibration/CMakeFiles/_catkin_empty_exported_target.dir/build
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================

@@ -182,32 +182,32 @@ process_image/fast:
 	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/build
 .PHONY : process_image/fast
 
-include/image2cv.o: include/image2cv.cpp.o
+include/process.o: include/process.cpp.o
 
-.PHONY : include/image2cv.o
+.PHONY : include/process.o
 
 # target to build an object file
-include/image2cv.cpp.o:
-	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/image2cv.cpp.o
-.PHONY : include/image2cv.cpp.o
+include/process.cpp.o:
+	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/process.cpp.o
+.PHONY : include/process.cpp.o
 
-include/image2cv.i: include/image2cv.cpp.i
+include/process.i: include/process.cpp.i
 
-.PHONY : include/image2cv.i
+.PHONY : include/process.i
 
 # target to preprocess a source file
-include/image2cv.cpp.i:
-	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/image2cv.cpp.i
-.PHONY : include/image2cv.cpp.i
+include/process.cpp.i:
+	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/process.cpp.i
+.PHONY : include/process.cpp.i
 
-include/image2cv.s: include/image2cv.cpp.s
+include/process.s: include/process.cpp.s
 
-.PHONY : include/image2cv.s
+.PHONY : include/process.s
 
 # target to generate assembly for a file
-include/image2cv.cpp.s:
-	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/image2cv.cpp.s
-.PHONY : include/image2cv.cpp.s
+include/process.cpp.s:
+	cd /home/h1r0/rm_vision_ws/build && $(MAKE) -f traditional_vision/CMakeFiles/process_image.dir/build.make traditional_vision/CMakeFiles/process_image.dir/include/process.cpp.s
+.PHONY : include/process.cpp.s
 
 src/process_image.o: src/process_image.cpp.o
 
@@ -250,9 +250,9 @@ help:
 	@echo "... test"
 	@echo "... install/strip"
 	@echo "... process_image"
-	@echo "... include/image2cv.o"
-	@echo "... include/image2cv.i"
-	@echo "... include/image2cv.s"
+	@echo "... include/process.o"
+	@echo "... include/process.i"
+	@echo "... include/process.s"
 	@echo "... src/process_image.o"
 	@echo "... src/process_image.i"
 	@echo "... src/process_image.s"

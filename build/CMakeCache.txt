@@ -465,10 +465,10 @@ hik2cv_pack_BINARY_DIR:STATIC=/home/h1r0/rm_vision_ws/build/hik2cv_pack
 hik2cv_pack_SOURCE_DIR:STATIC=/home/h1r0/rm_vision_ws/src/hik2cv_pack
 
 //Value Computed by CMake
-hik_pnp_BINARY_DIR:STATIC=/home/h1r0/rm_vision_ws/build/hik_pnp
+hik_calibration_BINARY_DIR:STATIC=/home/h1r0/rm_vision_ws/build/hik_calibration
 
 //Value Computed by CMake
-hik_pnp_SOURCE_DIR:STATIC=/home/h1r0/rm_vision_ws/src/hik_pnp
+hik_calibration_SOURCE_DIR:STATIC=/home/h1r0/rm_vision_ws/src/hik_calibration
 
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
