@@ -23,6 +23,8 @@ geometry_msgs/Point.h
 /home/h1r0/rm_vision_ws/src/traditional_vision/include/geometry_msgs/Point.h
 mutex
 -
+vector
+-
 
 /home/h1r0/rm_vision_ws/src/traditional_vision/src/process_image.cpp
 ../include/process.h
