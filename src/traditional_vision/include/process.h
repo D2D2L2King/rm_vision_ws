@@ -7,5 +7,16 @@
 #include <mutex> // 互斥锁头文件
 #include <vector> // 向量头文件
 
+
+// 灯条结构体，存储每个灯条的特征信息
+struct Light {
+    cv::RotatedRect rects; // 旋转矩形
+    cv::Point2f midPoints[2]; // 中线端点
+    float slope; // 中线斜率
+    float angle; // 旋转角度
+    float length; // 灯条长度
+    float width; // 灯条宽度
+};
+
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg); // 图像转换函数声明
 cv::Mat image_processing(const cv::Mat& image); // 图像处理函数声明
