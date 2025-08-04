@@ -21,17 +21,17 @@ cv::Mat image_processing(const cv::Mat& image) {
     frame = image.clone();
     // 这里处理图像比如灰度化、边缘检测等
     // 蓝色HSV范围
-    cv::Scalar lower_blue = cv::Scalar(95, 100, 100); // H:色相, S:饱和度, V:亮度
+    cv::Scalar lower_blue = cv::Scalar(100, 100, 100); // H:色相, S:饱和度, V:亮度
     cv::Scalar upper_blue = cv::Scalar(125, 255, 255);
     // 红色HSV范围
     cv::Scalar lower_red = cv::Scalar(0, 100, 100);
-    cv::Scalar upper_red = cv::Scalar(30, 255, 255);
+    cv::Scalar upper_red = cv::Scalar(25, 255, 255);
 
     // 转换为hsv色彩空间
     // 如果需要使用相关颜色的掩码，可以取消注释相关代码
     cv::cvtColor(image, hsv, cv::COLOR_BGR2HSV); // 将BGR图像转换为HSV色彩空间
-    // cv::inRange(hsv, lower_blue, upper_blue, mask); // 根据蓝色范围创建掩码
-    cv::inRange(hsv, lower_red, upper_red, mask); // 根据红色范围创建掩码,返回值是二值图像
+    cv::inRange(hsv, lower_blue, upper_blue, mask); // 根据蓝色范围创建掩码
+    // cv::inRange(hsv, lower_red, upper_red, mask); // 根据红色范围创建掩码,返回值是二值图像
     
     // 查找轮廓
     std::vector<std::vector<cv::Point>> contours;
@@ -93,20 +93,20 @@ cv::Mat image_processing(const cv::Mat& image) {
                 Light &light1 = lights[i]; // 引用，避免复制
                 Light &light2 = lights[j]; // 引用，避免复制
                 // 检查灯条长度差异
-                cv::Point2f center1 = (light1.midPoints[0] + light1.midPoints[1]) * 0.5f;
-                cv::Point2f center2 = (light2.midPoints[0] + light2.midPoints[1]) * 0.5f;
-                float light1_distance = norm(light1.midPoints[0] - light1.midPoints[1]);
-                float light2_distance = norm(light2.midPoints[0] - light2.midPoints[1]);
-                //float distance = norm(center1 - center2);
-                float avgLength = (light1.length + light2.length) * 0.5f;
+                cv::Point2f center1 = (light1.midPoints[0] + light1.midPoints[1]) * 0.5f; // 灯条中心
+                cv::Point2f center2 = (light2.midPoints[0] + light2.midPoints[1]) * 0.5f; // 灯条中心
+                float light1_distance = norm(light1.midPoints[0] - light1.midPoints[1]); // 灯条长度
+                float light2_distance = norm(light2.midPoints[0] - light2.midPoints[1]); // 灯条长度
+
+                float armour_length = ((norm(light1.midPoints[0] - light2.midPoints[0])) > (norm(light1.midPoints[0] - light2.midPoints[1]))) ? (norm(light1.midPoints[0] - light2.midPoints[1])) : (norm(light1.midPoints[0] - light2.midPoints[0])); // 算出灯条梯形的宽
+                float armour_wide = ((light1_distance + light2_distance) / 2.0f); // 算出灯条构成梯形的平均宽度   
                 if (light1_distance < 10) // 单个灯条的长度限制
                     continue; 
-                if (abs(light1_distance - light2_distance) > 100) // 灯条的长度差距
+                if (abs(light1_distance - light2_distance) > 50) // 灯条的长度差距
                     continue;
-
-                // if (abs(light1.angle - light2.angle) > 5)
-                //     continue;
-
+                // 中心矩形不符合比例的过滤
+                if (((armour_length / armour_wide) < ARMOUR_PROPORTION_MIN) || ((armour_length / armour_wide) > ARMOUR_PROPORTION_MAX))
+                    continue;
 
                 // 符合所有条件，绘制匹配线
                 cv::line(frame, center1, center2, cv::Scalar(0, 0, 255), 2);
@@ -120,16 +120,5 @@ cv::Mat image_processing(const cv::Mat& image) {
         }
         cv::imshow("1", frame); // debug
     
-
-
-
-
-
-
-
-
-
-    
-
     return mask;
 }
