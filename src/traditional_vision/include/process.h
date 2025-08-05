@@ -7,7 +7,7 @@
 #include <mutex> // 互斥锁头文件
 #include <vector> // 向量头文件
 
-#define ARMOUR_PROPORTION_MAX 4.1
+#define ARMOUR_PROPORTION_MAX 4.2
 #define ARMOUR_PROPORTION_MIN 1.4
 
 
@@ -22,4 +22,4 @@ struct Light {
 };
 
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg); // 图像转换函数声明
-cv::Mat image_processing(const cv::Mat& image); // 图像处理函数声明
+std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image); // 图像处理函数声明

@@ -15,7 +15,9 @@ cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg) {
     return cv_ptr -> image;
 }
 
-cv::Mat image_processing(const cv::Mat& image) {
+std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
+    // 结果储存动态数组
+    std::vector<std::array<cv::Point2f, 4>> result_rect;
     // 图像处理逻辑
     cv::Mat hsv, mask, frame;
     frame = image.clone();
@@ -46,11 +48,20 @@ cv::Mat image_processing(const cv::Mat& image) {
         // 过滤小面积区域
         if (cv::contourArea(contours[i]) < 20) 
             continue;
-        cv::drawContours(frame, contours, i, cv::Scalar(0, 255, 0), 4); // debug
+        // cv::drawContours(frame, contours, i, cv::Scalar(0, 255, 0), 4); // debug
         // 计算最小旋转矩形
         cv::RotatedRect rect = cv::minAreaRect(contours[i]);
         Light light; // 创建灯条对象
         light.rects = rect; // 存储旋转矩形
+
+        // 存储角度和尺寸
+        light.angle = rect.angle;
+        light.length = cv::max(rect.size.width, rect.size.height);
+        light.width = cv::min(rect.size.width, rect.size.height);
+
+        // 过滤比例不合适的方框 
+        if ((light.length / light.width) < 2.5f || (light.length / light.width) > 15.0f)
+            continue;
 
         // 获取矩形顶点并计算中线
         cv::Point2f vertex[4];
@@ -66,21 +77,18 @@ cv::Mat image_processing(const cv::Mat& image) {
             light.midPoints[1] = (vertex[3] + vertex[0]) * 0.5f;
         }
 
-        // 存储角度和尺寸
-        light.angle = rect.angle;
-        light.length = cv::max(rect.size.width, rect.size.height);
-        light.width = cv::min(rect.size.width, rect.size.height);
+ 
 
         lights.push_back(light); // 压入动态数组
 
         // 绘制旋转矩形和中线
-        for (int j = 0; j < 4; j++) 
-        {
-            cv::line(frame, vertex[j], vertex[(j+1)%4], cv::Scalar(0, 255, 0), 2);
-        }
-        cv::line(frame, light.midPoints[0], light.midPoints[1], cv::Scalar(0, 0, 255), 6);
-        cv::circle(frame, light.midPoints[0], 5, cv::Scalar(255, 0, 0), -1);
-        cv::circle(frame, light.midPoints[1], 5, cv::Scalar(255, 0, 0), -1);
+        // for (int j = 0; j < 4; j++) 
+        // {
+        //     cv::line(frame, vertex[j], vertex[(j+1)%4], cv::Scalar(0, 255, 0), 2);
+        // }
+        // cv::line(frame, light.midPoints[0], light.midPoints[1], cv::Scalar(0, 0, 255), 6);
+        // cv::circle(frame, light.midPoints[0], 5, cv::Scalar(255, 0, 0), -1);
+        // cv::circle(frame, light.midPoints[1], 5, cv::Scalar(255, 0, 0), -1);
     }
 
         int n = 1; // 步长
@@ -97,13 +105,13 @@ cv::Mat image_processing(const cv::Mat& image) {
                 cv::Point2f center2 = (light2.midPoints[0] + light2.midPoints[1]) * 0.5f; // 灯条中心
                 float light1_distance = norm(light1.midPoints[0] - light1.midPoints[1]); // 灯条长度
                 float light2_distance = norm(light2.midPoints[0] - light2.midPoints[1]); // 灯条长度
-
                 float armour_length = ((norm(light1.midPoints[0] - light2.midPoints[0])) > (norm(light1.midPoints[0] - light2.midPoints[1]))) ? (norm(light1.midPoints[0] - light2.midPoints[1])) : (norm(light1.midPoints[0] - light2.midPoints[0])); // 算出灯条梯形的宽
-                float armour_wide = ((light1_distance + light2_distance) / 2.0f); // 算出灯条构成梯形的平均宽度   
+                float armour_wide = ((light1_distance + light2_distance) * 0.5f); // 算出灯条构成梯形的平均宽度   
                 if (light1_distance < 10) // 单个灯条的长度限制
                     continue; 
                 if (abs(light1_distance - light2_distance) > 50) // 灯条的长度差距
                     continue;
+                    
                 // 中心矩形不符合比例的过滤
                 if (((armour_length / armour_wide) < ARMOUR_PROPORTION_MIN) || ((armour_length / armour_wide) > ARMOUR_PROPORTION_MAX))
                     continue;
@@ -114,11 +122,19 @@ cv::Mat image_processing(const cv::Mat& image) {
                 cv::line(frame, light2.midPoints[0], light1.midPoints[1], cv::Scalar(0, 0, 255), 2);
                 cv::line(frame, light1.midPoints[0], light2.midPoints[0], cv::Scalar(0, 0, 255), 2);
                 cv::line(frame, light2.midPoints[1], light1.midPoints[1], cv::Scalar(0, 0, 255), 2);
-                n = 2;
-                break;
+                std::array<cv::Point2f, 4> rect_point; // 静态数组储存四个点
+                // 存入点进数组
+                rect_point[0] = light1.midPoints[0];
+                rect_point[1] = light1.midPoints[1];
+                rect_point[2] = light2.midPoints[0];
+                rect_point[3] = light2.midPoints[1];
+                
+                result_rect.push_back(rect_point); // 压入四个点的静态数组array
+                // n = 2;
+                // break;
             }
         }
         cv::imshow("1", frame); // debug
     
-    return mask;
+    return result_rect; // 返回装甲板四个点
 }

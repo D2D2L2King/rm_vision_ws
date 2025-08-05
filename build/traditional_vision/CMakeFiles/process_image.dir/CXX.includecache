@@ -26,10 +26,6 @@ mutex
 vector
 -
 
-/home/h1r0/rm_vision_ws/src/traditional_vision/src/process_image.cpp
-../include/process.h
-/home/h1r0/rm_vision_ws/src/traditional_vision/include/process.h
-
 /opt/ros/noetic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h
 -

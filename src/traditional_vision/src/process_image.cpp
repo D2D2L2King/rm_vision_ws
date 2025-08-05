@@ -5,7 +5,7 @@
 void call_back(const sensor_msgs::ImageConstPtr& msg); // 回调函数声明
 
 std::mutex image_mutex;  // 保护共享图像的互斥锁
-cv::Mat image_tmp; // 用于存储处理后的图像, 全局变量
+cv::Mat image_tmp, image_processed; // 用于存储处理后的图像, 全局变量
 
 int main(int argc, char* argv[]) {
     ros::init(argc, argv, "tradtion_process_image_node"); // 初始化ROS节点
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         
         nh.param("/hik2cv_node/realtime_fps", real_fps, 150); // 从参数服务器获取最大帧率，默认值为150
         ros::Rate loop_rate(real_fps); // 设置循环频率
-        cv::Mat image_cv, image_processed; // 用于显示处理后的图像
+        cv::Mat image_cv; // 用于显示处理后的图像
         {
             std::lock_guard<std::mutex> lock(image_mutex); // 加锁，保护共享图像
             if (!image_tmp.empty()) 
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
         }
         /****** 图像处理 ******/
         if (!image_cv.empty()) {
-            image_processed = image_processing(image_cv); // 调用图像处理函数
+            auto lights_counter = image_processing(image_cv); // 调用图像处理函数
 
 
 
@@ -66,8 +66,8 @@ int main(int argc, char* argv[]) {
         std_msgs::Header header; // 创建ros消息头
         header.stamp = ros::Time::now(); // 设置时间戳
         header.frame_id = "hik2cv_frame"; // 设置帧ID
-        sensor_msgs::Image msg = *cv_bridge::CvImage(header, "bgr8", image_processed).toImageMsg(); // 将OpenCV图像转换为ROS消息格式
-        puber.publish(msg); // 发布图像消息
+        // sensor_msgs::Image msg = *cv_bridge::CvImage(header, "bgr8", image_processed).toImageMsg(); // 将OpenCV图像转换为ROS消息格式
+        // puber.publish(msg); // 发布图像消息
 
 
         ros::spinOnce(); // 处理回调函数
