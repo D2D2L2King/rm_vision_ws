@@ -7,8 +7,8 @@
 #include <mutex> // 互斥锁头文件
 #include <vector> // 向量头文件
 
-#define ARMOUR_PROPORTION_MAX 4.2
-#define ARMOUR_PROPORTION_MIN 1.4
+#define ARMOUR_PROPORTION_MAX 4.5
+#define ARMOUR_PROPORTION_MIN 1.2
 
 
 // 灯条结构体，存储每个灯条的特征信息

@@ -49,6 +49,8 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
         if (cv::contourArea(contours[i]) < 20) 
             continue;
         // cv::drawContours(frame, contours, i, cv::Scalar(0, 255, 0), 4); // debug
+
+        // 这里对单个灯条进行滤波
         // 计算最小旋转矩形
         cv::RotatedRect rect = cv::minAreaRect(contours[i]);
         Light light; // 创建灯条对象
@@ -60,7 +62,7 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
         light.width = cv::min(rect.size.width, rect.size.height);
 
         // 过滤比例不合适的方框 
-        if ((light.length / light.width) < 2.5f || (light.length / light.width) > 15.0f)
+        if ((light.length / light.width) < 1.85f || (light.length / light.width) > 15.0f)
             continue;
 
         // 获取矩形顶点并计算中线
@@ -77,16 +79,13 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
             light.midPoints[1] = (vertex[3] + vertex[0]) * 0.5f;
         }
 
- 
-
         lights.push_back(light); // 压入动态数组
-
         // 绘制旋转矩形和中线
         // for (int j = 0; j < 4; j++) 
         // {
         //     cv::line(frame, vertex[j], vertex[(j+1)%4], cv::Scalar(0, 255, 0), 2);
         // }
-        // cv::line(frame, light.midPoints[0], light.midPoints[1], cv::Scalar(0, 0, 255), 6);
+        cv::line(frame, light.midPoints[0], light.midPoints[1], cv::Scalar(0, 0, 255), 6);
         // cv::circle(frame, light.midPoints[0], 5, cv::Scalar(255, 0, 0), -1);
         // cv::circle(frame, light.midPoints[1], 5, cv::Scalar(255, 0, 0), -1);
     }
@@ -101,22 +100,34 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
                 Light &light1 = lights[i]; // 引用，避免复制
                 Light &light2 = lights[j]; // 引用，避免复制
                 // 检查灯条长度差异
-                cv::Point2f center1 = (light1.midPoints[0] + light1.midPoints[1]) * 0.5f; // 灯条中心
-                cv::Point2f center2 = (light2.midPoints[0] + light2.midPoints[1]) * 0.5f; // 灯条中心
+                float armour_length = ((norm(light1.midPoints[0] - light2.midPoints[0])) > (norm(light1.midPoints[0] - light2.midPoints[1]))) ? (norm(light1.midPoints[0] - light2.midPoints[1])) : (norm(light1.midPoints[0] - light2.midPoints[0])); // 算出灯条梯形的宽
+                // 这里对灯条匹配条件进行筛选
                 float light1_distance = norm(light1.midPoints[0] - light1.midPoints[1]); // 灯条长度
                 float light2_distance = norm(light2.midPoints[0] - light2.midPoints[1]); // 灯条长度
-                float armour_length = ((norm(light1.midPoints[0] - light2.midPoints[0])) > (norm(light1.midPoints[0] - light2.midPoints[1]))) ? (norm(light1.midPoints[0] - light2.midPoints[1])) : (norm(light1.midPoints[0] - light2.midPoints[0])); // 算出灯条梯形的宽
-                float armour_wide = ((light1_distance + light2_distance) * 0.5f); // 算出灯条构成梯形的平均宽度   
                 if (light1_distance < 10) // 单个灯条的长度限制
                     continue; 
                 if (abs(light1_distance - light2_distance) > 50) // 灯条的长度差距
                     continue;
-                    
                 // 中心矩形不符合比例的过滤
+                float armour_wide = ((light1_distance + light2_distance) * 0.5f); // 算出灯条构成梯形的平均宽度
                 if (((armour_length / armour_wide) < ARMOUR_PROPORTION_MIN) || ((armour_length / armour_wide) > ARMOUR_PROPORTION_MAX))
                     continue;
-
+                // 用向量计算角度差
+                cv::Point2f vec1 = light1.midPoints[1] - light1.midPoints[0]; // 灯条1向量
+                cv::Point2f vec2 = light2.midPoints[1] - light2.midPoints[0]; // 灯条2向量
+                float dot_product = abs(vec1.x * vec2.x + vec1.y * vec2.y); // 点积
+                float magnitude1 = sqrt(vec1.x * vec1.x + vec1.y * vec1.y); // 向量1的模
+                float magnitude2 = sqrt(vec2.x * vec2.x + vec2.y * vec2.y); // 向量2的模
+                float angle_diff = acos(dot_product / (magnitude1 * magnitude2)) * (180.0f / CV_PI); // 计算夹角并转换为角度
+                // debug
+                // ROS_INFO("magnitude1: %.2f, magnitude2: %.2f", magnitude1, magnitude2);
+                // ROS_INFO("angle_diff:%.2f", angle_diff);
+                // ROS_INFO("dot_product:%.2f", dot_product);
+                if (angle_diff > 12.0f) // 角度差过滤
+                    continue;
                 // 符合所有条件，绘制匹配线
+                cv::Point2f center1 = (light1.midPoints[0] + light1.midPoints[1]) * 0.5f; // 灯条中心
+                cv::Point2f center2 = (light2.midPoints[0] + light2.midPoints[1]) * 0.5f; // 灯条中心
                 cv::line(frame, center1, center2, cv::Scalar(0, 0, 255), 2);
                 cv::line(frame, light1.midPoints[0], light2.midPoints[1], cv::Scalar(0, 0, 255), 2);
                 cv::line(frame, light2.midPoints[0], light1.midPoints[1], cv::Scalar(0, 0, 255), 2);
@@ -128,13 +139,12 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
                 rect_point[1] = light1.midPoints[1];
                 rect_point[2] = light2.midPoints[0];
                 rect_point[3] = light2.midPoints[1];
-                
                 result_rect.push_back(rect_point); // 压入四个点的静态数组array
                 // n = 2;
                 // break;
             }
         }
-        cv::imshow("1", frame); // debug
+        cv::imshow("debug", frame); // debug
     
     return result_rect; // 返回装甲板四个点
 }
