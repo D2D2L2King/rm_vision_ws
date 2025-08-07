@@ -145,6 +145,44 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
             }
         }
         cv::imshow("debug", frame); // debug
-    
     return result_rect; // 返回装甲板四个点
+}
+
+// 装甲板数字的扣图和仿射变换
+cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_raw){
+    cv::Mat number_image; // 仿射变换后扣出的图片
+    sortPointsClockwise(array_rect); // 顺时针排序四个点
+
+    // 定义目标矩形区域（宽度和高度根据需求调整）
+    int width = 32;  // 裁剪后图像的宽度
+    int height = 28; // 裁剪后图像的高度
+    std::array<cv::Point2f, 4> dst_points = {
+        cv::Point2f(0, height),            // 左上
+        cv::Point2f(width-1, height),      // 右上
+        cv::Point2f(width-1, 0), // 右下
+        cv::Point2f(0, 0)      // 左下
+    };   
+    // 计算仿射变换矩阵
+    cv::Mat transform_matrix = cv::getPerspectiveTransform(array_rect, dst_points);
+    cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(width, height));
+
+    return number_image;
+}
+
+// 对四边形的四个无序点进行按顺时针排序
+void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect){
+    cv::Point2f center(0,0);
+    // 计算四个点的中心点
+    for (const auto& pt : array_rect){
+        center += pt;
+    }
+    center /= 4.0f;
+    // 定义排序规则
+    auto compare = [center](const cv::Point2f& a, const cv::Point2f& b) {
+        return std::atan2(a.y - center.y, a.x - center.x) < 
+               std::atan2(b.y - center.y, b.x - center.x);
+    };
+    // 排序
+    std::sort(array_rect.begin(), array_rect.end(), compare);
+    // std::swap(array_rect[2], array_rect[3]); // 交换最后两个点
 }

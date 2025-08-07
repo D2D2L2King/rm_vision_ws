@@ -1,4 +1,5 @@
-#pragma once 
+#ifndef PROCESS_H
+#define PROCESS_H
 #include "opencv2/opencv.hpp" // OpenCV头文件
 #include "ros/ros.h" // ROS头文件
 #include "cv_bridge/cv_bridge.h" // ROS与OpenCV桥接头文件
@@ -6,6 +7,8 @@
 #include "geometry_msgs/Point.h" // ROS几何消息头文件
 #include <mutex> // 互斥锁头文件
 #include <vector> // 向量头文件
+#include <array> // 数组头文件
+#include <algorithm> // 算法头文件
 
 #define ARMOUR_PROPORTION_MAX 4.5
 #define ARMOUR_PROPORTION_MIN 1.2
@@ -23,3 +26,7 @@ struct Light {
 
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg); // 图像转换函数声明
 std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image); // 图像处理函数声明
+cv::Mat armour_transform(std::array<cv::Point2f, 4> &array_rect, cv::Mat &image_raw); // 装甲板仿射变换函数声明
+void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect); // 顺时针排序函数声明
+
+#endif // PROCESS_H

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/h1r0/rm_vision_ws/src/traditional_vision/include/process.cpp
-process.h
-/home/h1r0/rm_vision_ws/src/traditional_vision/include/process.h
-
 /home/h1r0/rm_vision_ws/src/traditional_vision/include/process.h
 opencv2/opencv.hpp
 /home/h1r0/rm_vision_ws/src/traditional_vision/include/opencv2/opencv.hpp
@@ -24,6 +20,10 @@ geometry_msgs/Point.h
 mutex
 -
 vector
+-
+array
+-
+algorithm
 -
 
 /home/h1r0/rm_vision_ws/src/traditional_vision/src/process_image.cpp
