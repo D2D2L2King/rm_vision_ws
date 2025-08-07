@@ -80,14 +80,8 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
         }
 
         lights.push_back(light); // 压入动态数组
-        // 绘制旋转矩形和中线
-        // for (int j = 0; j < 4; j++) 
-        // {
-        //     cv::line(frame, vertex[j], vertex[(j+1)%4], cv::Scalar(0, 255, 0), 2);
-        // }
+        // 绘制灯条线
         cv::line(frame, light.midPoints[0], light.midPoints[1], cv::Scalar(0, 0, 255), 6);
-        // cv::circle(frame, light.midPoints[0], 5, cv::Scalar(255, 0, 0), -1);
-        // cv::circle(frame, light.midPoints[1], 5, cv::Scalar(255, 0, 0), -1);
     }
 
         int n = 1; // 步长
@@ -157,10 +151,10 @@ cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_
     int width = 40;  // 裁剪后图像的宽度
     int height = 28; // 裁剪后图像的高度
     std::array<cv::Point2f, 4> dst_points = {
-        cv::Point2f(0, height),            // 左上
-        cv::Point2f(width-1, height),      // 右上
+        cv::Point2f(0, height), // 左上
+        cv::Point2f(width-1, height), // 右上
         cv::Point2f(width-1, 0), // 右下
-        cv::Point2f(0, 0)      // 左下
+        cv::Point2f(0, 0) // 左下
     };   
     // 计算仿射变换矩阵
     cv::Mat transform_matrix = cv::getPerspectiveTransform(array_rect, dst_points);
@@ -197,5 +191,6 @@ void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect){
     };
     // 排序
     std::sort(array_rect.begin(), array_rect.end(), compare);
-    // std::swap(array_rect[2], array_rect[3]); // 交换最后两个点
+    std::swap(array_rect[0], array_rect[2]); // 交换前面两个点
+    std::swap(array_rect[1], array_rect[3]); // 交换最后两个点
 }
