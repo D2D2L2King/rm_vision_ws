@@ -1,5 +1,10 @@
 #include "process.h"
 
+/* 
+包括imge转cv函数,灯条二值化及匹配函数,装甲板几何变换扣ROI函数,装甲板到相机坐标系tf变换获取函数
+*/
+
+
 // image图像转cv::Mat函数
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg) {
     cv_bridge::CvImagePtr cv_ptr;
@@ -143,22 +148,20 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image) {
 }
 
 // 装甲板数字的扣图和仿射变换
-cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_raw){
+cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_raw) {
     cv::Mat number_image; // 仿射变换后扣出的图片
     sortPointsClockwise(array_rect); // 顺时针排序四个点
 
     // 定义目标矩形区域（宽度和高度根据需求调整）
-    int width = 40;  // 裁剪后图像的宽度
-    int height = 28; // 裁剪后图像的高度
     std::array<cv::Point2f, 4> dst_points = {
-        cv::Point2f(0, height), // 左上
-        cv::Point2f(width-1, height), // 右上
-        cv::Point2f(width-1, 0), // 右下
+        cv::Point2f(0, transform_height), // 左上
+        cv::Point2f(transform_width - 1, transform_height), // 右上
+        cv::Point2f(transform_width - 1, 0), // 右下
         cv::Point2f(0, 0) // 左下
     };   
     // 计算仿射变换矩阵
     cv::Mat transform_matrix = cv::getPerspectiveTransform(array_rect, dst_points);
-    cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(width, height));
+    cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(transform_width, transform_height));
     // 将图像转为HSV色彩空间
     cv::Mat hsv_image;
     cv::cvtColor(number_image, hsv_image, cv::COLOR_BGR2HSV);
@@ -177,10 +180,11 @@ cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_
 }
 
 // 对四边形的四个无序点进行按顺时针排序
-void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect){
+void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect) {
     cv::Point2f center(0,0);
     // 计算四个点的中心点
-    for (const auto& pt : array_rect){
+    for (const auto& pt : array_rect)
+    {
         center += pt;
     }
     center /= 4.0f;
@@ -193,4 +197,23 @@ void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect){
     std::sort(array_rect.begin(), array_rect.end(), compare);
     std::swap(array_rect[0], array_rect[2]); // 交换前面两个点
     std::swap(array_rect[1], array_rect[3]); // 交换最后两个点
+}
+
+// 获取装甲板到摄像头的4x4齐次变换矩阵,select_armour: 0为小装甲板,1为大装甲板
+cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
+    // 定义四点的真实坐标系
+    if (select_armour == 0) // 如果为小装甲板
+    {
+
+    }
+    else if (select_armour == 1) // 如果为大装甲板
+    {
+
+
+    }
+    cv::Mat tf_matrix; // 计算出来的4x4变换矩阵
+
+
+
+    return tf_matrix;
 }
