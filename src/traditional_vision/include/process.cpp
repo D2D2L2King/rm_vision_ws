@@ -154,7 +154,7 @@ cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_
     sortPointsClockwise(array_rect); // 顺时针排序四个点
 
     // 定义目标矩形区域（宽度和高度根据需求调整）
-    int width = 32;  // 裁剪后图像的宽度
+    int width = 40;  // 裁剪后图像的宽度
     int height = 28; // 裁剪后图像的高度
     std::array<cv::Point2f, 4> dst_points = {
         cv::Point2f(0, height),            // 左上
@@ -165,6 +165,19 @@ cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_
     // 计算仿射变换矩阵
     cv::Mat transform_matrix = cv::getPerspectiveTransform(array_rect, dst_points);
     cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(width, height));
+    // 将图像转为HSV色彩空间
+    cv::Mat hsv_image;
+    cv::cvtColor(number_image, hsv_image, cv::COLOR_BGR2HSV);
+    // 将亮度拉高
+    std::vector<cv::Mat> hsv_channels;
+    cv::split(hsv_image, hsv_channels);
+    hsv_channels[2] += 100; // 增加亮度
+    cv::merge(hsv_channels, hsv_image);
+    // 将处理后的图像转换回BGR色彩空间
+    cv::cvtColor(hsv_image, number_image, cv::COLOR_HSV2BGR);
+    // 将图像转换为灰度图
+    // cv::cvtColor(number_image, number_image, cv::COLOR_BGR2GRAY);
+    // 二值化处理
 
     return number_image;
 }

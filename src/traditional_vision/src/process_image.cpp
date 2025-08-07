@@ -33,30 +33,14 @@ int main(int argc, char* argv[]) {
         /****** 图像处理 ******/
         if (!image_cv.empty()) {
             auto lights_counter = image_processing(image_cv); // 调用图像处理函数
-            // 输出lights_counter的内容
+            // 输出检测到的灯条数量
             ROS_INFO("Detected %zu lights.", lights_counter.size()); // 输出检测到的灯条数量
-            // for (const auto& light : lights_counter) {
-            //     // 输出每个灯条的四个点
-            //     ROS_INFO("Light points: (%f, %f), (%f, %f), (%f, %f), (%f, %f)",
-            //              light[0].x, light[0].y,
-            //              light[1].x, light[1].y,
-            //              light[2].x, light[2].y,
-            //              light[3].x, light[3].y);
-            // }
             // 调用仿射变换函数
             if (lights_counter.size() != 0) // 当检测到装甲板时
             {
                 image_processed = armour_transform(lights_counter[0], image_cv);
-                cv::imshow("1", image_processed);
+                cv::imshow("armour_number", image_processed);
             }
-            // 输出lights_counter[0]的内容
-            // if (!image_processed.empty()) {
-            //     ROS_INFO("Transformed points: (%f, %f), (%f, %f), (%f, %f), (%f, %f)",
-            //          lights_counter[0][0].x, lights_counter[0][0].y,
-            //          lights_counter[0][1].x, lights_counter[0][1].y,
-            //          lights_counter[0][2].x, lights_counter[0][2].y,
-            //          lights_counter[0][3].x, lights_counter[0][3].y);
-            // }
 
             
             
