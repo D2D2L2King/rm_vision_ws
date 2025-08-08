@@ -1,6 +1,8 @@
 #include "../include/process.h"
 
 #define MAX_FPS 150 // 默认最大帧率
+#define AM_BLUE 0 // 装甲板颜色标志，0为蓝色，1为红色
+#define AM_RED 1 // 装甲板颜色标志，0为蓝色，1为红色
 
 void call_back(const sensor_msgs::ImageConstPtr& msg); // 回调函数声明
 
@@ -8,6 +10,16 @@ std::mutex image_mutex;  // 保护共享图像的互斥锁
 cv::Mat image_tmp, image_processed; // 用于存储处理后的图像, 全局变量
 
 int main(int argc, char* argv[]) {
+    bool color_select = AM_BLUE; // 瞄准颜色标志, 默认为蓝色
+    // 处理传入参数
+    if (argc >= 2)
+    {
+        std::string aim_color = argv[1];
+        if (aim_color == "R") // 如果瞄准红色
+            color_select = AM_RED; // 设置为红色
+        else if (aim_color == "B") // 如果瞄准蓝色
+            color_select = AM_BLUE; // 设置为蓝色
+    }
     ros::init(argc, argv, "tradtion_process_image_node"); // 初始化ROS节点
     ros::NodeHandle nh; // 创建ROS节点句柄
     ros::Subscriber suber = nh.subscribe<sensor_msgs::Image>("/hik2cv/hik_image", 3, call_back); // 订阅图像话题，队列大小为5
@@ -32,7 +44,7 @@ int main(int argc, char* argv[]) {
         }
         /****** 图像处理 ******/
         if (!image_cv.empty()) {
-            auto lights_counter = image_processing(image_cv); // 调用图像处理函数
+            auto lights_counter = image_processing(image_cv, color_select); // 调用图像处理函数
             // 输出检测到的灯条数量
             ROS_INFO("Detected %zu lights.", lights_counter.size()); // 输出检测到的灯条数量
             // 调用仿射变换函数

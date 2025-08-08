@@ -1,0 +1,7 @@
+<launch>
+    <arg name="aim_color" default="B" /> <!-- 敌方颜色:R or B -->
+    <include file="$(find hik2cv_pack)/launch/hik2cv.launch" /> <!-- 启动海康相机节点 -->
+    <node  pkg="traditional_vision" type="process_image" name="traditional_process_node" args="$(arg aim_color)" output="screen" />
+    <param name="armour_color" value="$(arg aim_color)" /> <!-- 将设别的颜色注册到参数服务器 -->
+
+</launch>

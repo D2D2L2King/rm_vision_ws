@@ -31,7 +31,7 @@ struct Light {
 };
 
 cv::Mat image2cv(const sensor_msgs::ImageConstPtr& msg); // 图像转换函数声明
-std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image); // 图像处理函数声明
+std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image, bool color); // 图像处理函数声明
 cv::Mat armour_transform(std::array<cv::Point2f, 4> &array_rect, cv::Mat &image_raw); // 装甲板仿射变换函数声明
 void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect); // 顺时针排序函数声明
 cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour); // 获取装甲板到摄像头4x4的变换矩阵

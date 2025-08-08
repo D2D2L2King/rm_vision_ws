@@ -1,3 +1,0 @@
-<launch>
-    <node pkg="traditional_vision" type="process_image" name="tradtitional_process" output="screen"/>
-</launch>
