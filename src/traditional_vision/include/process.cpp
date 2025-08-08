@@ -154,21 +154,21 @@ cv::Mat armour_transform(std::array<cv::Point2f, 4>& array_rect, cv::Mat& image_
 
     // 定义目标矩形区域（宽度和高度根据需求调整）
     std::array<cv::Point2f, 4> dst_points = {
-        cv::Point2f(0, transform_height), // 左上
-        cv::Point2f(transform_width - 1, transform_height), // 右上
-        cv::Point2f(transform_width - 1, 0), // 右下
+        cv::Point2f(0, TRANSFORM_HEIGHT), // 左上
+        cv::Point2f((TRANSFORM_WIDTH - 1), TRANSFORM_HEIGHT), // 右上
+        cv::Point2f((TRANSFORM_WIDTH - 1), 0), // 右下
         cv::Point2f(0, 0) // 左下
     };   
     // 计算仿射变换矩阵
     cv::Mat transform_matrix = cv::getPerspectiveTransform(array_rect, dst_points);
-    cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(transform_width, transform_height));
+    cv::warpPerspective(image_raw, number_image, transform_matrix, cv::Size(TRANSFORM_WIDTH, TRANSFORM_HEIGHT));
     // 将图像转为HSV色彩空间
     cv::Mat hsv_image;
     cv::cvtColor(number_image, hsv_image, cv::COLOR_BGR2HSV);
     // 将亮度拉高
     std::vector<cv::Mat> hsv_channels;
     cv::split(hsv_image, hsv_channels);
-    hsv_channels[2] += 100; // 增加亮度
+    hsv_channels[2] += 150; // 增加亮度
     cv::merge(hsv_channels, hsv_image);
     // 将处理后的图像转换回BGR色彩空间
     cv::cvtColor(hsv_image, number_image, cv::COLOR_HSV2BGR);
@@ -204,14 +204,23 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
     // 定义四点的真实坐标系
     if (select_armour == 0) // 如果为小装甲板
     {
-
+        // 坐标轴顺序: x轴向右, y轴向上, z轴向前
+        std::array<cv::Point3f, 4> objectPoints = { // 顺时针顺序
+            cv::Point3f((-SMALL_ARMOUR_WIDTH / 2.0f), (SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 左上
+            cv::Point3f((SMALL_ARMOUR_WIDTH / 2.0f), (SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 右上
+            cv::Point3f((SMALL_ARMOUR_WIDTH / 2.0f), (-SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 右下
+            cv::Point3f((-SMALL_ARMOUR_WIDTH / 2.0f), (-SMALL_ARMOUR_HEIGHT / 2.0f), 0) // 左下
+        };
     }
     else if (select_armour == 1) // 如果为大装甲板
     {
 
 
     }
-    cv::Mat tf_matrix; // 计算出来的4x4变换矩阵
+    cv::Mat tf_matrix/* 计算出来的4x4变换矩阵 */, carmera_matrix/* 相机内参矩阵 */, distCoeffs/* 相机畸变参数 */;
+    // 从rosparam获取相机内参和畸变参数
+
+
 
 
 

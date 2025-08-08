@@ -13,8 +13,11 @@
 #define ARMOUR_PROPORTION_MAX 4.5 // 装甲板灯条匹配长宽比
 #define ARMOUR_PROPORTION_MIN 1.2 // 装甲板灯条匹配长宽比
 
-#define transform_width 80// 40 // 几何变换后裁减的图像宽
-#define transform_height 56// 28 // 几何变换后裁减的图像高
+#define TRANSFORM_WIDTH 80// 40 // 几何变换后裁减的图像宽
+#define TRANSFORM_HEIGHT 56// 28 // 几何变换后裁减的图像高
+
+#define SMALL_ARMOUR_WIDTH 13.1 // 小装甲板灯条距离
+#define SMALL_ARMOUR_HEIGHT 5.5 // 小装甲板灯条距离
 
 
 // 灯条结构体，存储每个灯条的特征信息
