@@ -224,6 +224,11 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
     ros::NodeHandle nh_tmp("hik2cv_node"); // 创建ROS节点句柄
     nh_tmp.getParam("camera_matrix", camera_matrix_string); // 获取内参矩阵
     nh_tmp.getParam("distCoeffs", distCoeffs_strng); // 获取畸变矩阵
+    std::vector<double> carmera_matrix = extractDoublesFromString(camera_matrix_string); // 将字符串转为动态数组
+
+    // ROS_INFO("%lf", carmera_matrix[0]);
+    // ROS_INFO_STREAM(distCoeffs_strng); // 输出字符串debug
+    
     // // 计算变换矩阵
     // // cv::solvePnP(objectPoints, array_rect, carmera_matrix, distCoeffs, tf_matrix);
 
@@ -233,4 +238,30 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
 
 
     return tf_matrix;
+}
+
+// 提取形如：“[1.0,2.0]”字符串的小数
+std::vector<double> extractDoublesFromString(const std::string& str) {
+    std::vector<double> numbers;
+    
+    // 检查字符串是否以 '[' 开头和 ']' 结尾
+    if (str.empty() || str.front() != '[' || str.back() != ']') {
+        return numbers; // 返回空数组（或抛出异常）
+    }
+
+    // 移除首尾的方括号
+    std::string content = str.substr(1, str.size() - 2);
+
+    // 使用 stringstream 按逗号分隔
+    std::stringstream ss(content);
+    std::string token;
+    while (std::getline(ss, token, ',')) {
+        try {
+            numbers.push_back(std::stod(token));
+        } catch (const std::exception& e) {
+            // 忽略无效 token（或记录错误）
+            continue;
+        }
+    }
+    return numbers;
 }

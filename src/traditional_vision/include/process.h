@@ -35,5 +35,6 @@ std::vector<std::array<cv::Point2f, 4>> image_processing(const cv::Mat& image, b
 cv::Mat armour_transform(std::array<cv::Point2f, 4> &array_rect, cv::Mat &image_raw); // 装甲板仿射变换函数声明
 void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect); // 顺时针排序函数声明
 cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour); // 获取装甲板到摄像头4x4的变换矩阵
+std::vector<double> extractDoublesFromString(const std::string& str); // 提取字符串的小数
 
 #endif // PROCESS_H
