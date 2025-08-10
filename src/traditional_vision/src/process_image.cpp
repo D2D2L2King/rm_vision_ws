@@ -31,7 +31,6 @@ int main(int argc, char* argv[]) {
     while (ros::ok()) 
     {
         // 从参数服务器获取参数
-        
         nh.param("/hik2cv_node/realtime_fps", real_fps, 150); // 从参数服务器获取最大帧率，默认值为150
         ros::Rate loop_rate(real_fps); // 设置循环频率
         cv::Mat image_cv; // 用于显示处理后的图像
@@ -50,7 +49,9 @@ int main(int argc, char* argv[]) {
             // 调用仿射变换函数
             if (lights_counter.size() != 0) // 当检测到装甲板时
             {
-                image_processed = armour_transform(lights_counter[0], image_cv);
+                image_processed = armour_transform(lights_counter[0], image_cv); // 装甲板图案几何变换
+
+                TFget(lights_counter[0], 0/* 小装甲板 */); // 装甲板tf变换
                 cv::imshow("armour_number", image_processed);
             }
 

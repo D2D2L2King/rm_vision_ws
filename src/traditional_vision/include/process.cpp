@@ -203,6 +203,7 @@ void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect) {
 
 // 获取装甲板到摄像头的4x4齐次变换矩阵,select_armour: 0为小装甲板,1为大装甲板
 cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
+    cv::Mat tf_matrix/* 计算出来的4x4变换矩阵 */;
     // 定义四点的真实坐标系
     if (select_armour == 0) // 如果为小装甲板
     {
@@ -216,11 +217,16 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
     }
     else if (select_armour == 1) // 如果为大装甲板
     {
-
-
     }
-    cv::Mat tf_matrix/* 计算出来的4x4变换矩阵 */, carmera_matrix/* 相机内参矩阵 */, distCoeffs/* 相机畸变参数 */;
+    
+    std::string camera_matrix_string, distCoeffs_strng; // 从参数服务器获得的内参和畸变字符串
     // 从rosparam获取相机内参和畸变参数
+    ros::NodeHandle nh_tmp("hik2cv_node"); // 创建ROS节点句柄
+    nh_tmp.getParam("camera_matrix", camera_matrix_string); // 获取内参矩阵
+    nh_tmp.getParam("distCoeffs", distCoeffs_strng); // 获取畸变矩阵
+    // // 计算变换矩阵
+    // // cv::solvePnP(objectPoints, array_rect, carmera_matrix, distCoeffs, tf_matrix);
+
 
 
 
