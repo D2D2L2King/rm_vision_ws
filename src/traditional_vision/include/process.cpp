@@ -204,11 +204,12 @@ void sortPointsClockwise(std::array<cv::Point2f, 4>& array_rect) {
 // 获取装甲板到摄像头的4x4齐次变换矩阵,select_armour: 0为小装甲板,1为大装甲板
 cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
     cv::Mat tf_matrix/* 计算出来的4x4变换矩阵 */;
+    std::array<cv::Point3f, 4> objectPoints; // 装甲板坐标系下的装甲板点
     // 定义四点的真实坐标系
     if (select_armour == 0) // 如果为小装甲板
     {
         // 坐标轴顺序: x轴向右, y轴向上, z轴向前
-        std::array<cv::Point3f, 4> objectPoints = { // 顺时针顺序
+        objectPoints = { // 顺时针顺序
             cv::Point3f((-SMALL_ARMOUR_WIDTH / 2.0f), (SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 左上
             cv::Point3f((SMALL_ARMOUR_WIDTH / 2.0f), (SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 右上
             cv::Point3f((SMALL_ARMOUR_WIDTH / 2.0f), (-SMALL_ARMOUR_HEIGHT / 2.0f), 0), // 右下
@@ -224,13 +225,20 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
     ros::NodeHandle nh_tmp("hik2cv_node"); // 创建ROS节点句柄
     nh_tmp.getParam("camera_matrix", camera_matrix_string); // 获取内参矩阵
     nh_tmp.getParam("distCoeffs", distCoeffs_strng); // 获取畸变矩阵
-    std::vector<double> carmera_matrix = extractDoublesFromString(camera_matrix_string); // 将字符串转为动态数组
-
-    // ROS_INFO("%lf", carmera_matrix[0]);
+    std::vector<double> carmera_matrix = extractDoublesFromString(camera_matrix_string); // 将字符串转为动态数组(相机内参矩阵)
+    std::vector<double> distCoeffs = extractDoublesFromString(distCoeffs_strng); // 将字符串转为动态数组(畸变矩阵)
+    // 转换为 cv::Mat
+    cv::Mat camera_matrix_mat = cv::Mat(3, 3, CV_64F, carmera_matrix.data()).clone(); // 将内参矩阵vector转为mat
+    cv::Mat dist_coeffs_mat = cv::Mat(1, distCoeffs.size(), CV_64F, distCoeffs.data()).clone(); // 将畸变向量转为mat
+    // ROS_INFO("%lf", carmera_matrix[0]); // debug
     // ROS_INFO_STREAM(distCoeffs_strng); // 输出字符串debug
-    
-    // // 计算变换矩阵
-    // // cv::solvePnP(objectPoints, array_rect, carmera_matrix, distCoeffs, tf_matrix);
+
+    // 计算变换矩阵
+    cv::Mat rvec, tvec; // 旋转向量和平移向量
+    cv::solvePnP(objectPoints/* 世界坐标系下的点 */, array_rect/* 二维映射的点 */, 
+                camera_matrix_mat/* 相机内参矩阵 */, dist_coeffs_mat/* 畸变矩阵 */, 
+                rvec/* 旋转向量 */, tvec/* 平移向量 */
+                false/* 禁用初始估计 */, );
 
 
 
@@ -243,15 +251,12 @@ cv::Mat TFget(std::array<cv::Point2f, 4>& array_rect, bool select_armour) {
 // 提取形如：“[1.0,2.0]”字符串的小数
 std::vector<double> extractDoublesFromString(const std::string& str) {
     std::vector<double> numbers;
-    
     // 检查字符串是否以 '[' 开头和 ']' 结尾
     if (str.empty() || str.front() != '[' || str.back() != ']') {
         return numbers; // 返回空数组（或抛出异常）
     }
-
     // 移除首尾的方括号
     std::string content = str.substr(1, str.size() - 2);
-
     // 使用 stringstream 按逗号分隔
     std::stringstream ss(content);
     std::string token;

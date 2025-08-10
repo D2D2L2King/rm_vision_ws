@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
                 image_processed = armour_transform(lights_counter[0], image_cv); // 装甲板图案几何变换
 
                 TFget(lights_counter[0], 0/* 小装甲板 */); // 装甲板tf变换
-                cv::imshow("armour_number", image_processed);
+                // cv::imshow("armour_number", image_processed);
             }
 
             
